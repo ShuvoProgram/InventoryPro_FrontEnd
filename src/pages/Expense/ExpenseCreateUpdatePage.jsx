@@ -1,18 +1,20 @@
-import React, { Suspense, lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import LazyLoader from "../../components/MasterLayout/LazyLoader";
 import MasterLayout from "../../components/MasterLayout/MasterLayout";
-const Dashboard = lazy(() => import("../../components/Dashboard/Dashboard"));
+const ExpenseCreateUpdateFile = lazy(() =>
+  import("../../components/Expense/ExpenseCreateUpdate")
+);
 
-const DashboardPage = () => {
+const ExpenseCreateUpdatePage = () => {
   return (
     <>
       <MasterLayout>
         <Suspense fallback={<LazyLoader />}>
-          <Dashboard />
+          <ExpenseCreateUpdateFile />
         </Suspense>
       </MasterLayout>
     </>
   );
 };
 
-export default DashboardPage;
+export default ExpenseCreateUpdatePage;
