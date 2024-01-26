@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BsTrash } from "react-icons/all";
+import { BsTrash } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
