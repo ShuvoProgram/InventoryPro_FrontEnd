@@ -3,7 +3,6 @@ import { Accordion, Container, Navbar } from "react-bootstrap";
 import {
   AiOutlineBank,
   AiOutlineLogout,
-  AiOutlineMenu,
   AiOutlineUser,
   AiOutlineUnorderedList,
   AiOutlineMenuUnfold
@@ -11,7 +10,6 @@ import {
 import {
   RiDashboardLine
 } from "react-icons/ri";
-// import { IoCreateOutline } from "react-icons/io";
 import { TbTruckDelivery } from "react-icons/tb";
 import {
   BsBagPlus,
@@ -123,7 +121,7 @@ const MasterLayout = (props) => {
         },
         {
           title: "New Expense",
-          // icon: <IoCreateOutline size={16} className="side-bar-subitem-icon" />,
+          icon: <BsCircle size={16} className="side-bar-subitem-icon" />,
           url: "/expenseCreateUpdate",
         },
         {
