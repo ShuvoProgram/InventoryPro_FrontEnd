@@ -5,14 +5,14 @@ import {
   AiOutlineLogout,
   AiOutlineMenu,
   AiOutlineUser,
+  AiOutlineUnorderedList,
+  AiOutlineMenuUnfold
 } from "react-icons/ai";
 import {
-  AiOutlineUnorderedList,
-  IoCreateOutline,
-  RiDashboardLine,
-  TbTruckDelivery,
-  AiOutlineMenuUnfold
-} from "react-icons/all";
+  RiDashboardLine
+} from "react-icons/ri";
+// import { IoCreateOutline } from "react-icons/io";
+import { TbTruckDelivery } from "react-icons/tb";
 import {
   BsBagPlus,
   BsBagX,
@@ -123,7 +123,7 @@ const MasterLayout = (props) => {
         },
         {
           title: "New Expense",
-          icon: <IoCreateOutline size={16} className="side-bar-subitem-icon" />,
+          // icon: <IoCreateOutline size={16} className="side-bar-subitem-icon" />,
           url: "/expenseCreateUpdate",
         },
         {
