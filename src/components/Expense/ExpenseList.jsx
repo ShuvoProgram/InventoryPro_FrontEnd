@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import CurrencyFormat from "react-currency-format";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
@@ -9,6 +10,17 @@ import {
   ExpenseListRequest,
 } from "../../APIRequest/ExpenseApiRequest";
 import { DeleteAlert } from "../../helper/DeleteAlert";
+import { I18nProvider, useNumberFormatter } from "@react-aria/i18n";
+
+function Currency({ value, currency }) {
+  let formatter = useNumberFormatter({
+    style: 'currency',
+    currency,
+    minimumFractionDigits: 0
+  });
+
+  return <p>{formatter.format(value)}</p>;
+}
 
 const ExpenseList = () => {
   let [searchKey, setSearchKey] = useState("0");
@@ -147,12 +159,10 @@ const ExpenseList = () => {
                                 </td>
                                 <td>
                                   <p className="text-xs text-start">
-                                    <CurrencyFormat
-                                      value={item.Amount}
-                                      displayType={"text"}
-                                      thousandSeparator={true}
-                                      prefix={"$"}
-                                    />
+                                    <I18nProvider locale="en-US">
+                                      <Currency value={item.Amount} currency="USD" />
+                                    </I18nProvider>
+
                                   </p>
                                 </td>
                                 <td>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
@@ -7,7 +8,7 @@ import { Link } from "react-router-dom";
 import {
   BrandListRequest,
   DeleteBrandRequest,
-} from "../../APIRequest/BrandAPiRequest";
+} from "../../APIRequest/BrandApiRequest";
 import { DeleteAlert } from "../../helper/DeleteAlert";
 
 const BrandList = () => {

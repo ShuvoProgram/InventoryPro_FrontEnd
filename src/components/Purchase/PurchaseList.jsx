@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import CurrencyFormat from "react-currency-format";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
@@ -10,6 +11,7 @@ import {
   PurchaseListRequest,
 } from "../../APIRequest/PurchaseApiRequest";
 import { DeleteAlert } from "../../helper/DeleteAlert";
+import { I18nProvider, useNumberFormatter } from "@react-aria/i18n";
 
 const PurchaseList = () => {
   let [searchKey, setSearchKey] = useState("0");
@@ -61,6 +63,16 @@ const PurchaseList = () => {
       }
     }
   };
+
+  function Currency({ value, currency }) {
+    let formatter = useNumberFormatter({
+      style: 'currency',
+      currency,
+      minimumFractionDigits: 0
+    });
+
+    return <p>{formatter.format(value)}</p>;
+  }
 
   return (
     <>
@@ -163,52 +175,42 @@ const PurchaseList = () => {
                                 </td>
                                 <td>
                                   <p className="text-xs text-start">
-                                    <CurrencyFormat
-                                      value={item.GrandTotal}
-                                      displayType={"text"}
-                                      thousandSeparator={true}
-                                      prefix={"$"}
-                                    />
+                                    <I18nProvider locale="en-US">
+                                      <Currency value={item.GrandTotal} currency="USD" />
+                                    </I18nProvider>
+
                                   </p>
                                 </td>
                                 <td>
                                   <p className="text-xs text-start">
-                                    <CurrencyFormat
-                                      value={item.ShippingCost}
-                                      displayType={"text"}
-                                      thousandSeparator={true}
-                                      prefix={"$"}
-                                    />
+                                    <I18nProvider locale="en-US">
+                                      <Currency value={item.ShippingCost} currency="USD" />
+                                    </I18nProvider>
+
                                   </p>
                                 </td>
                                 <td>
                                   <p className="text-xs text-start">
-                                    <CurrencyFormat
-                                      value={item.VatTax}
-                                      displayType={"text"}
-                                      thousandSeparator={true}
-                                      prefix={"$"}
-                                    />
+                                    <I18nProvider locale="en-US">
+                                      <Currency value={item.VatTax} currency="USD" />
+                                    </I18nProvider>
+
                                   </p>
                                 </td>
                                 <td>
                                   <p className="text-xs text-start">
-                                    <CurrencyFormat
-                                      value={item.OtherCost}
-                                      displayType={"text"}
-                                      thousandSeparator={true}
-                                      prefix={"$"}
-                                    />
+                                    <I18nProvider locale="en-US">
+                                      <Currency value={item.OtherCost} currency="USD" />
+                                    </I18nProvider>
+
                                   </p>
                                 </td>
                                 <td>
                                   <p className="text-xs text-start">
-                                    <CurrencyFormat
-                                      value={item.Discount}
-                                      displayType={"text"}
-                                      thousandSeparator={true}
-                                      prefix={"$"}
-                                    />
+                                    <I18nProvider locale="en-US">
+                                      <Currency value={item.Discount} currency="USD" />
+                                    </I18nProvider>
+
                                   </p>
                                 </td>
 

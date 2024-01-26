@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
-import CurrencyFormat from "react-currency-format";
-import { BsFillCalculatorFill,BsFillLayersFill,BsBoxes,BsFillCartCheckFill } from "react-icons/bs";
+import { BsFillCalculatorFill, BsFillLayersFill, BsBoxes, BsFillCartCheckFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import {
   Area,
@@ -17,6 +18,18 @@ import {
   ReturnSummary,
   SaleSummary,
 } from "../../APIRequest/DashboardApiRequest";
+import { I18nProvider, useNumberFormatter } from "@react-aria/i18n";
+
+
+function Currency({ value, currency }) {
+  let formatter = useNumberFormatter({
+    style: 'currency',
+    currency,
+    minimumFractionDigits: 0
+  });
+
+  return <p className="h4">{formatter.format(value)}</p>;
+}
 
 const Dashboard = () => {
   useEffect(() => {
@@ -30,6 +43,7 @@ const Dashboard = () => {
 
   let ExpenseChart = useSelector((state) => state.dashboard.ExpenseChart);
   let ExpenseTotal = useSelector((state) => state.dashboard.ExpenseTotal);
+  console.log(ExpenseTotal);
 
   let SaleChart = useSelector((state) => state.dashboard.SaleChart);
   let SaleTotal = useSelector((state) => state.dashboard.SaleTotal);
@@ -48,16 +62,13 @@ const Dashboard = () => {
             <div className="card">
               <div className="card-body d-flex">
                 <BsFillCalculatorFill
-                  style={{ fontSize: "50px", color: "rebeccapurple",paddingRight: "10px" }}
+                  style={{ fontSize: "50px", color: "rebeccapurple", paddingRight: "10px" }}
                 />
 
                 <div className="h4">
-                  <CurrencyFormat
-                    value={ExpenseTotal}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    prefix={"$"}
-                  />
+                  <I18nProvider locale="en-US">
+                    <Currency value={ExpenseTotal} currency="USD" />
+                  </I18nProvider>
                   <h5>Total Expense</h5>
                 </div>
               </div>
@@ -66,17 +77,14 @@ const Dashboard = () => {
           <div className="col-md-3 p-2">
             <div className="card">
               <div className="card-body d-flex">
-              <BsBoxes
-                  style={{ fontSize: "50px", color: "green",paddingRight: "10px" }}
+                <BsBoxes
+                  style={{ fontSize: "50px", color: "green", paddingRight: "10px" }}
                 />
                 <div className="h4">
-                  <CurrencyFormat
-                    value={SaleTotal}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    prefix={"$"}
-                  />
-                <h5>Total Sale</h5>
+                <I18nProvider locale="en-US">
+                    <Currency value={SaleTotal} currency="USD" />
+                  </I18nProvider>
+                  <h5>Total Sale</h5>
                 </div>
               </div>
             </div>
@@ -84,17 +92,14 @@ const Dashboard = () => {
           <div className="col-md-3 p-2">
             <div className="card">
               <div className="card-body d-flex">
-              <BsFillCartCheckFill
-                  style={{ fontSize: "50px", color: "hotpink",paddingRight: "10px" }}
+                <BsFillCartCheckFill
+                  style={{ fontSize: "50px", color: "hotpink", paddingRight: "10px" }}
                 />
                 <div className="h4">
-                  <CurrencyFormat
-                    value={PurchaseTotal}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    prefix={"$"}
-                  />
-                <h5>Total Purchase</h5>
+                <I18nProvider locale="en-US">
+                    <Currency value={PurchaseTotal} currency="USD" />
+                  </I18nProvider>
+                  <h5>Total Purchase</h5>
                 </div>
               </div>
             </div>
@@ -102,17 +107,15 @@ const Dashboard = () => {
           <div className="col-md-3 p-2">
             <div className="card">
               <div className="card-body d-flex">
-              <BsFillLayersFill
+                <BsFillLayersFill
                   style={{ fontSize: "50px", color: "darkred", paddingRight: "10px" }}
                 />
                 <div className="h4">
-                  <CurrencyFormat
-                    value={ReturnTotal}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    prefix={"$"}
-                  />
-                <h5>Total Return</h5>
+                <I18nProvider locale="en-US">
+                    <Currency value={ReturnTotal} currency="USD" />
+                  </I18nProvider>
+                  
+                  <h5>Total Return</h5>
                 </div>
               </div>
             </div>
@@ -215,8 +218,8 @@ const Dashboard = () => {
                     <Area
                       type="monotone"
                       dataKey="TotalAmount"
-                      // stroke="#CB0C9F"
-                      // fill="#CB0C9F"
+                    // stroke="#CB0C9F"
+                    // fill="#CB0C9F"
                     />
                   </AreaChart>
                 </ResponsiveContainer>
