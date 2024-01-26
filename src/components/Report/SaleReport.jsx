@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import exportFromJSON from "export-from-json";
 import moment from "moment";
 import React, { useState } from "react";
-// import CurrencyFormat from "react-currency-format";
+import { I18nProvider, useNumberFormatter } from "@react-aria/i18n";
 import { useSelector } from "react-redux";
 import { SaleByDateRequest } from "../../APIRequest/ReportApiRequest";
 import dataFound from "../../assets/img/dat.png";
@@ -54,6 +55,16 @@ const SaleReport = () => {
       });
     }
   };
+
+  function Currency({ value, currency }) {
+    let formatter = useNumberFormatter({
+      style: 'currency',
+      currency,
+      minimumFractionDigits: 0
+    });
+
+    return <p>{formatter.format(value)}</p>;
+  }
 
   return (
     <div className="container-fluid">
@@ -113,16 +124,13 @@ const SaleReport = () => {
                     />
                     <h6>
                       Total:{" "}
-                      {/* {DataList[0]["Total"].length > 0 ? (
-                        <CurrencyFormat
-                          value={DataList[0]["Total"][0]["TotalAmount"]}
-                          displayType={"text"}
-                          thousandSeparator={true}
-                          prefix={"$ "}
-                        />
+                      {DataList[0]["Total"].length > 0 ? (
+                        <I18nProvider locale="en-US">
+                          <Currency value={DataList[0]["Total"][0]["TotalAmount"]} currency="USD" />
+                        </I18nProvider>
                       ) : (
                         0
-                      )}{" "} */}
+                      )}{" "}
                     </h6>
                     <button
                       onClick={() => OnExport("csv", DataList[0]["Rows"])}

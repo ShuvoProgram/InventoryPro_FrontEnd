@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   let ExpenseChart = useSelector((state) => state.dashboard.ExpenseChart);
   let ExpenseTotal = useSelector((state) => state.dashboard.ExpenseTotal);
-  console.log(ExpenseTotal);
+
 
   let SaleChart = useSelector((state) => state.dashboard.SaleChart);
   let SaleTotal = useSelector((state) => state.dashboard.SaleTotal);

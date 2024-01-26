@@ -13,7 +13,6 @@ const PurchaseReport = () => {
   let DataList = useSelector((state) => state.report.PurchaseByDateList);
   const [date, setDate] = useState({ formDate: "", toDate: "" });
 
-  console.log(DataList);
   const handelChange = (e) => {
     let Name = e.target.name;
     setDate((oldValue) => {
