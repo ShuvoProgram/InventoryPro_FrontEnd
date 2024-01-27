@@ -110,3 +110,7 @@ InventoryPro: A cutting-edge inventory management solution designed for seamless
 - Returns Summary: Get an overview of total returns.
 - Purchases Summary: Get an overview of total purchases.
 - Sales Summary: Get an overview of total sales.
+
+# Authors
+
+- [@Shuvo khan](https://github.com/ShuvoProgram)
