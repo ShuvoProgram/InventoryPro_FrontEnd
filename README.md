@@ -4,8 +4,6 @@
 
 <h1 align="center">📊 InventoryPro: A Smart Inventory Management Solution</h1>
 
-# Inventory Management System Demo
-
 ![App Screenshot](/github/InventoryPro.png)
 
 # Overview
