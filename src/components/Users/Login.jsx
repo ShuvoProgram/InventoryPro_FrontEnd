@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { LoginRequest } from "../../APIRequest/UserApiRequest";
@@ -5,8 +6,8 @@ import { ErrorToast, IsEmail, IsEmpty } from "../../helper/FormHelper";
 
 const Login = () => {
   let [data, setData] = useState({
-    UserEmail: "ismailsardar540@gmail.com",
-    password: "1234567",
+    UserEmail: "shuvo@gmail.com",
+    password: "shuvo123",
   });
 
   let { UserEmail, password } = data;

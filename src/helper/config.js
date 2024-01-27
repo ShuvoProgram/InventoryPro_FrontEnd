@@ -1,1 +1,1 @@
-export const BaseURL = "https://inventory-management.cyclic.app/api/v1";
+export const BaseURL = "https://inventory-pro-backend.vercel.app/api/v1";
